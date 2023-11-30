@@ -2,7 +2,7 @@
 
 by Léa Bouffaut, Ph.D. -- K. Lisa Yang Center for Conservation Bioacoustics -- lea.bouffaut@cornell.edu
 
-This repository aims to provide helpful code examples for bioacoustics in Python. At the moment, the following examples are available:
+This repository aims to provide helpful code examples for bioacoustics in Python and uses Jupyter Notebooks. At the moment, the following examples are available:
 * _AudioManipulating/_, a quick tutorial on how to safely resample audio files and choose the output audio file format
 * _ModelPerformancEvaluation/_ is used to evaluate automatic detection algorithms that assign a classification score to audio files that are divided into potentially overlapping audio clips of flexible duration (e.g., BirdNET or Koogu-trained models). It generates precision-recall curves based on Raven selection tables for the ground-truth and model output.
 * _Spectrogram/_ is a quick tutorial to load an audio file, generate and save your own spectrogram!
