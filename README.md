@@ -41,7 +41,7 @@ You do not need to remember all functions. Some, of course, you will remember by
 It is good practice to document your code, and starting by drafting your English version of the algorithm should help. But even more, don't hesitate to add comments, explain why you're doing things one way and not another etc.
 
 **Tip 6: Use explicit variable names!** 
-I remember when I started, all my variables were named x1, x2, y3... It was an absolute hell for other people to read my code. Now, if _x1_ became _day_ and _y3_ became _daily_temperature_, all of the sudden, it is a lot clearer to everyone! You can use the Tab key for autocompletion. 
+I remember when I started, all my variables were named x1, x2, y3... It was an absolute hell for other people to read my code. Now, if _x1_ became _day_ and _y3_ became _temperature_daily_, all of the sudden, it is a lot clearer to everyone! You can use the Tab key for autocompletion. 
 
 **Tip 7: Read other people's code!**
 Like learning a foreign language, it will help discover new ways of getting a specific task done and it will help broaden your "code literacy." As for a foreign language you're reading, there might be words (e.g., functions) or grammatical tools (e.g., code structure) you are unfamiliar with: back to tip 4... Google it!
