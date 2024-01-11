@@ -19,25 +19,25 @@ https://www.youtube.com/watch?v=7wf1HhYQiDg"
 
 _S'more tips from my personal experience_
 
-**Tip 1: Get a grasp of the vocab' and grammar! **
+**Tip 1: Get a grasp of the vocab' and grammar!**
 The above videos should help but get familiar with 
 •	variables (https://realpython.com/python-variables/), 
 •	data types (https://realpython.com/python-data-types/), 
 •	data structures (especially lists, arrays, and dictionaries: https://realpython.com/python-data-structures/), and 
 •	loops (if, for, while: https://www.learnpython.org/en/Loops, https://www.w3schools.com/python/python_for_loops.asp)
 
-**Tip 2: Start with a project that you find fun! **
+**Tip 2: Start with a project that you find fun!**
 Some ideas with examples: 
 https://www.dataquest.io/blog/python-projects-for-beginners/ 
 If your goal is to learn to manipulate data, check out "Fun Python Project Ideas for Building Data Skills" section. If you find it fun, you will want to get back to it, and it'll be easier to dedicate time to figure things out.
 
-**Tip 3: Practice Algorithmic! **
+**Tip 3: Practice Algorithmic!**
 Meaning, structure your code as you would for a research paper. What is the objective of this piece of code? How would you break it down into simpler "logical" tasks? 
 
-**Tip 4: Google your way! **
+**Tip 4: Google your way!**
 You do not need to remember all functions. Some, of course, you will remember by practicing. For most, you might have to Google it, and that's okay! What is essential is to learn how to do a Google search to find valuable information. :)
 
-**Tip 5: Document your code! **
+**Tip 5: Document your code!**
 It is good practice to document your code, and starting by drafting your English version of the algorithm should help. But even more, don't hesitate to add comments, explain why you're doing things one way and not another etc.
 
 **Tip 6: Use explicit variable names!** 
