@@ -13,19 +13,18 @@ This repository aims to provide helpful code examples for bioacoustics in Python
 Python is a  programming language that can be programmed from many different interfaces. But, using the terminal is not super interactive and can be scary to start (also, for projects, it is impractical).  So, people usually use development environments, e.g., Pycharm or Spyder, to code. It gives you a nicer interface for your projects and usually comes with some help (think, when you write a Word document and have grammar suggestions, auto-completion, etc.). I would recommend starting with Jupyter Notebooks. It is a super friendly environment and allows you to have a lot of interactions with the code.
 
 So first, I'd recommend familiarizing yourself with Python basics and Jupyter Notebooks! Here are a couple of helpful tutorials:
-•	Python for Beginners - Learn Python in 1 Hour: https://www.youtube.com/watch?v=kqtD5dpn9C8
-•	Jupyter Lab is AWESOME For Data Science:
-https://www.youtube.com/watch?v=7wf1HhYQiDg"
+* Python for Beginners - Learn Python in 1 Hour: https://www.youtube.com/watch?v=kqtD5dpn9C8
+* Jupyter Lab is AWESOME For Data Science: https://www.youtube.com/watch?v=7wf1HhYQiDg"
 
 
 _S'more tips from my personal experience_
 
 **Tip 1: Get a grasp of the vocab' and grammar!**
 The above videos should help but get familiar with 
-•	variables (https://realpython.com/python-variables/), 
-•	data types (https://realpython.com/python-data-types/), 
-•	data structures (especially lists, arrays, and dictionaries: https://realpython.com/python-data-structures/), and 
-•	loops (if, for, while: https://www.learnpython.org/en/Loops, https://www.w3schools.com/python/python_for_loops.asp)
+* variables (https://realpython.com/python-variables/),
+* data types (https://realpython.com/python-data-types/),
+* data structures (especially lists, arrays, and dictionaries: https://realpython.com/python-data-structures/), and
+* loops (if, for, while: https://www.learnpython.org/en/Loops, https://www.w3schools.com/python/python_for_loops.asp)
 
 **Tip 2: Start with a project that you find fun!**
 Some ideas with examples: 
