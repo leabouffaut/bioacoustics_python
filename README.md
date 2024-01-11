@@ -17,6 +17,7 @@ So first, I'd recommend familiarizing yourself with Python basics and Jupyter No
 •	Jupyter Lab is AWESOME For Data Science:
 https://www.youtube.com/watch?v=7wf1HhYQiDg"
 
+//
 _S'more tips from my personal experience_
 
 **Tip 1: Get a grasp of the vocab' and grammar!**
