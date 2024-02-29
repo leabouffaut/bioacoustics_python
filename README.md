@@ -20,7 +20,7 @@ So first, I'd recommend familiarizing yourself with Python basics and Jupyter No
 _S'more tips from my personal experience_
 
 **Tip 1: Get a grasp of the vocab' and grammar!**
-The above videos should help but get familiar with 
+The videos below should help but get familiar with 
 * variables (https://realpython.com/python-variables/),
 * data types (https://realpython.com/python-data-types/),
 * data structures (especially lists, arrays, and dictionaries: https://realpython.com/python-data-structures/), and
