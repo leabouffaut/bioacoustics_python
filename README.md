@@ -1,4 +1,4 @@
-# bioacoustics_python
+# Bioacoustics in Python
 
 by Léa Bouffaut, Ph.D. -- K. Lisa Yang Center for Conservation Bioacoustics -- lea.bouffaut@cornell.edu
 
@@ -26,22 +26,25 @@ The videos below should help but get familiar with
 * data structures (especially lists, arrays, and dictionaries: https://realpython.com/python-data-structures/), and
 * loops (if, for, while: https://www.learnpython.org/en/Loops, https://www.w3schools.com/python/python_for_loops.asp)
 
-**Tip 2: Start with a project that you find fun!**
+**Tip 2: Get familiar with virtual environments**
+Virtual environements are generally created for each project, and allow you to select which Python version you wish to work with as well as contain the functions and modules you are using. Standard development environements will create them automatically, here are some guidelines for Jupyter Lab https://medium.com/@laquesisa/virtual-environment-in-jupyter-lab-8b3815ba9662
+
+**Tip 23: Start with a project that you find fun!**
 Some ideas with examples: 
 https://www.dataquest.io/blog/python-projects-for-beginners/ 
 If your goal is to learn to manipulate data, check out "Fun Python Project Ideas for Building Data Skills" section. If you find it fun, you will want to get back to it, and it'll be easier to dedicate time to figure things out.
 
-**Tip 3: Practice Algorithmic!**
+**Tip 4: Practice Algorithmic!**
 Meaning, structure your code as you would for a research paper. What is the objective of this piece of code? How would you break it down into simpler "logical" tasks? 
 
-**Tip 4: Google your way!**
+**Tip 5: Google your way!**
 You do not need to remember all functions. Some, of course, you will remember by practicing. For most, you might have to Google it, and that's okay! What is essential is to learn how to do a Google search to find valuable information. :)
 
-**Tip 5: Document your code!**
+**Tip 6: Document your code!**
 It is good practice to document your code, and starting by drafting your English version of the algorithm should help. But even more, don't hesitate to add comments, explain why you're doing things one way and not another etc.
 
-**Tip 6: Use explicit variable names!** 
+**Tip 7: Use explicit variable names!** 
 I remember when I started, all my variables were named x1, x2, y3... It was an absolute hell for other people to read my code. Now, if _x1_ became _day_ and _y3_ became _temperature_daily_, all of the sudden, it is a lot clearer to everyone! You can use the Tab key for autocompletion. 
 
-**Tip 7: Read other people's code!**
+**Tip 8: Read other people's code!**
 Like learning a foreign language, it will help discover new ways of getting a specific task done and it will help broaden your "code literacy." As for a foreign language you're reading, there might be words (e.g., functions) or grammatical tools (e.g., code structure) you are unfamiliar with: back to tip 4... Google it!
