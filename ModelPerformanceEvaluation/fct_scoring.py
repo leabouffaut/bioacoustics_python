@@ -28,9 +28,10 @@ def get_detections_from_selections(file_list, label_header, list_remap_label, mo
     detections = {}
    
     for selection_table in file_list:
-        begin_time_clip = np.linspace(0, model_info['clip_number'][file_nb]*model_info['clip_length'], 
-                                     model_info['clip_number'][file_nb])
-
+    
+        # Calculate begin_time_clip
+        begin_time_clip = np.array([i * (model_info['clip_length'] - model_info['overlap']) for i in range(model_info['clip_number'][file_nb])])
+        
         # Create an zeroes array accessible as detections[file_nb][label_nb][clip_nb]
         detections[file_nb] = np.zeros((len(list_remap_label),model_info['clip_number'][file_nb]))
 
@@ -48,33 +49,33 @@ def get_detections_from_selections(file_list, label_header, list_remap_label, mo
                         duration = end_time-begin_time
 
                         # find the clip that contains begin_time
-                        ind_clip_begin_time = np.where(begin_time_clip<=begin_time)
-
+                        ind_clip_begin_time = np.where(begin_time_clip+model_info['clip_length']>= begin_time)
+                        ind_clip_begin_time = ind_clip_begin_time[0][0]
+                        
                         # find the clip that contains end_time
-                        ind_clip_end_time = np.where(begin_time_clip+model_info['clip_length'] >=end_time)
-
+                        ind_clip_end_time = np.where(begin_time_clip+model_info['clip_length']-model_info['overlap']>=end_time)
+                        try:
+                            ind_clip_end_time = ind_clip_end_time[0][0]
+                        except: # Case where this is the last clip
+                            ind_clip_end_time = ind_clip_begin_time
+                        
+                              
                         # Easy case: the label is within one clip window
-                        if ind_clip_begin_time[0][-1] == ind_clip_end_time[0][0]: 
-                            detections[file_nb][label_nb][ind_clip_begin_time[0][-1]] = 1 
+                        if ind_clip_begin_time == ind_clip_end_time: 
+                            detections[file_nb][label_nb][ind_clip_begin_time] = 1 
 
                         # Case where label is across several clip windows
                         else:
-                            # print('Label: ', begin_time, end_time, label_nb)
-                            # print('Index begin time: ', ind_clip_begin_time[0][-1], ' Index end time: ', ind_clip_end_time[0][0])
-                            # print('Clip start: ', begin_time_clip[ind_clip_begin_time[0][-1]], ' Clip stop: ', begin_time_clip[ind_clip_end_time[0][0]]+clip_length)
 
-                            # is there more than mini_sig_dur_positive * duration in the first clip
-                            if begin_time_clip[ind_clip_end_time[0][0]] - begin_time >= performance_info['mini_sig_dur_positive']*duration: 
-                                detections[file_nb][label_nb][ind_clip_begin_time[0][-1]] = 1 
-                                # print('Signal marked in clip 1',  (begin_time_clip[ind_clip_end_time[0][0]] - begin_time)/duration)
-
+                            if begin_time_clip[ind_clip_begin_time]+ model_info['clip_length']- begin_time >= performance_info['mini_sig_dur_positive']: 
+                                detections[file_nb][label_nb][ind_clip_begin_time] = 1 
+    
                             # is there more than mini_sig_dur_positive * duration in the first clip in the last clip
-                            if end_time - begin_time_clip[ind_clip_end_time[0][0]] >= performance_info['mini_sig_dur_positive']*duration: 
-                                detections[file_nb][label_nb][ind_clip_begin_time[0][0]] = 1
-                                # print('Signal marked in clip 2', (end_time - begin_time_clip[ind_clip_end_time[0][0]])/duration)
+                            if end_time - begin_time_clip[ind_clip_end_time] >= performance_info['mini_sig_dur_positive']: 
+                                detections[file_nb][label_nb][ind_clip_end_time] = 1
 
         file_nb += 1
-    # print(begin_time_clip[np.where(detections[0][0]==1)])
+
     return detections
 
 def get_detections_from_selections_var_threshold(file_list, list_remap_label, model_info, performance_info, threshold = 0):
@@ -84,8 +85,9 @@ def get_detections_from_selections_var_threshold(file_list, list_remap_label, mo
     detections = {}
     label_header = model_info['label_col']
     for selection_table in file_list:
-        begin_time_clip = np.linspace(0, model_info['clip_number'][file_nb]*model_info['clip_length'], 
-                                      model_info['clip_number'][file_nb])
+        
+        # Calculate begin_time_clip
+        begin_time_clip = np.array([i * (model_info['clip_length'] - model_info['overlap']) for i in range(model_info['clip_number'][file_nb])])
 
         # Create an zeroes array accessible as detections[file_nb][label_nb][clip_nb]
         detections[file_nb] = np.zeros((len(list_remap_label),model_info['clip_number'][file_nb]))
@@ -96,7 +98,6 @@ def get_detections_from_selections_var_threshold(file_list, list_remap_label, mo
             for row in csv_reader:   
                     # Test if the label exists otherwise skip to next line
                     if (row[label_header] in list_remap_label) & (float(row[model_info['score_column']])>=threshold):
-                        
                         begin_time = float(row['Begin Time (s)'])
                         end_time = float(row['End Time (s)'])
                         label_nb = list_remap_label.index(row[label_header])
@@ -114,26 +115,18 @@ def get_detections_from_selections_var_threshold(file_list, list_remap_label, mo
 
                         # Case where label is across several clip windows
                         else:
-                            # print('Label: ', begin_time, end_time, label_nb)
-                            # print('Index begin time: ', ind_clip_begin_time[0][-1], ' Index end time: ', ind_clip_end_time[0][0])
-                            # print('Clip start: ', begin_time_clip[ind_clip_begin_time[0][-1]], ' Clip stop: ', begin_time_clip[ind_clip_end_time[0][0]]+model_info['clip_length'])
 
                             # is there more than mini_sig_dur_positive * duration in the first clip
-                            if begin_time_clip[ind_clip_end_time[0][0]] - begin_time >= performance_info['mini_sig_dur_positive']*duration: 
+                            if begin_time_clip[ind_clip_end_time[0][0]] - begin_time >= performance_info['mini_sig_dur_positive']: 
                                 detections[file_nb][label_nb][ind_clip_begin_time[0][-1]] = 1 
-                                # print('Signal marked in clip 1',  (begin_time_clip[ind_clip_end_time[0][0]] - begin_time)/duration)
 
                             # is there more than mini_sig_dur_positive * duration in the first clip in the last clip
-                            if end_time - begin_time_clip[ind_clip_end_time[0][0]] >= performance_info['mini_sig_dur_positive']*duration: 
+                            if end_time - begin_time_clip[ind_clip_end_time[0][0]] >= performance_info['mini_sig_dur_positive']: 
                                 detections[file_nb][label_nb][ind_clip_begin_time[0][0]] = 1
-                                # print('Signal marked in clip 2', (end_time - begin_time_clip[ind_clip_end_time[0][0]])/duration)
+
 
         file_nb += 1
 
-    # print(begin_time_clip[np.where(detections[0][0]==1)])
-    #print(np.shape(detections[0]))
-    #plt.plot(detections[0][0])
-    #plt.plot(detections[0][1])
     return detections
 
 def scores(detections_groundtruth, detections_model, nb_test_files):
@@ -165,6 +158,7 @@ def get_precision_recall_per_class(tp, fp, fn, nb_test_files, nb_labels):
             tp_total = sum([tp[tt][label_ind] for tt in range(nb_test_files)])
             fp_total = sum([fp[tt][label_ind] for tt in range(nb_test_files)])
             fn_total = sum([fn[tt][label_ind] for tt in range(nb_test_files)])
+            
             precision.append(tp_total/(tp_total + fp_total))
             recall.append(tp_total/(tp_total+ fn_total))
 
@@ -187,6 +181,10 @@ def evaluate_precision_recall(label_correspondance_map, detector_file_list, grou
     # Checked, the outputs of detection groundtruth are different for both labels print(detections[0][0],detections[0][1])
     detections_groundtruth = get_detections_from_selections(groundtruth_file_list, performance_info['groundtruth_label_col'], 
                                             list_labels_groundtruth, model_info, performance_info)
+    #print(detections_groundtruth[0])
+    #[print(f'{i[0]}') for i in detections_groundtruth[0].T]
+    
+    
     
     ## Evaluate the BirdNET detections at varying thresholds to create precision-recall curves
     # Create where the results are going to be stored
@@ -199,11 +197,11 @@ def evaluate_precision_recall(label_correspondance_map, detector_file_list, grou
     for th in threshold:
         # Evaluate model at this threshold
         detections_model = get_detections_from_selections_var_threshold(detector_file_list, list_labels_model, model_info, performance_info, threshold = th)
-
+    
 
         # Count the tp/fp/fn/tn across all test files
         tp, fp, fn, tn = scores(detections_groundtruth, detections_model, len(groundtruth_file_list))
-        
+        #print(f'Threshold {th}: tp ={tp[0]}, fp = {fp[0]}, fn = {fn[0]}')
         # Get precision and recall for each class
         pr, re = get_precision_recall_per_class(tp, fp, fn, len(groundtruth_file_list), len(list_labels_model))
 
@@ -212,5 +210,4 @@ def evaluate_precision_recall(label_correspondance_map, detector_file_list, grou
             precision[label].append(pr[indx])
             recall[label].append(re[indx])
             indx += 1
-
     return precision, recall, list_labels_model
