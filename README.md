@@ -10,7 +10,7 @@ This repository aims to provide helpful code examples for bioacoustics in Python
 
 --- New to Python? ---
 
-Python is a  programming language that can be programmed from many different interfaces. But, using the terminal is not super interactive and can be scary to start (also, for projects, it is impractical).  So, people usually use development environments, e.g., Pycharm or Spyder, to code. It gives you a nicer interface for your projects and usually comes with some help (think, when you write a Word document and have grammar suggestions, auto-completion, etc.). I would recommend starting with Jupyter Notebooks. It is a super friendly environment and allows you to have a lot of interactions with the code.
+Python is a  programming language that can be programmed from many different interfaces. But, using the terminal is not super interactive and can be scary to start (also, for projects, it is impractical).  So, people usually use development environments, e.g., VSCode, Pycharm or Spyder, to code. It gives you a nicer interface for your projects and usually comes with some help (think, when you write a Word document and have grammar suggestions, auto-completion, etc.). I would recommend starting with Jupyter Notebooks. It is a super friendly environment and allows you to have a lot of interactions with the code.
 
 So first, I'd recommend familiarizing yourself with Python basics and Jupyter Notebooks! Here are a couple of helpful tutorials:
 * Python for Beginners - Learn Python in 1 Hour: https://www.youtube.com/watch?v=kqtD5dpn9C8
